@@ -161,8 +161,22 @@ const PainPointsSection = () => {
   );
 };
 
-// Portfolio Section  
+// Portfolio Section
 const PortfolioSection = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    dragFree: true,
+    containScroll: 'trimSnaps'
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
   const projects = [
     {
       title: "Kapitani",
@@ -187,6 +201,18 @@ const PortfolioSection = () => {
       description: "We delivered a powerful brand revamp and a custom jersey design to give the academy a professional look to wear with pride.",
       badge: "Brand Revamp & Jersey Design",
       image: "https://api.builder.io/api/v1/image/assets/TEMP/87308c8ffa5d94713e04c98da188f9afaccaad4f?width=768"
+    },
+    {
+      title: "Tech Startup Logo",
+      description: "A modern tech startup needed a clean, minimalist logo that would scale across all platforms and convey innovation.",
+      badge: "Logo Design",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/b15ece4ef90fbca82aaaa3a2d48db69a75c7a653?width=768"
+    },
+    {
+      title: "Restaurant Brand Identity",
+      description: "Complete brand identity for a premium restaurant including logo, menu design, and signage.",
+      badge: "Full Brand Identity",
+      image: "https://api.builder.io/api/v1/image/assets/TEMP/464654eb4a00e7a16d472a5396f6855665baf904?width=768"
     }
   ];
 
@@ -204,38 +230,47 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-8 mb-8">
-          {projects.map((project, index) => (
-            <div key={index} className="relative group">
-              <div className="aspect-[3/4] rounded-xl overflow-hidden bg-cover bg-center relative"
-                   style={{ backgroundImage: `url(${project.image})` }}>
-                <div className="absolute top-6 left-6">
-                  <span className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
-                    {project.badge}
-                  </span>
-                </div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-black/50 backdrop-blur-sm border border-white/50 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
-                    <p className="text-white/90 text-sm leading-relaxed mb-4">{project.description}</p>
-                    <button className="flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
-                      Read case study
-                      <ArrowUpRight className="w-5 h-5" />
-                    </button>
+        {/* Carousel Container */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-8">
+            {projects.map((project, index) => (
+              <div key={index} className="relative group min-w-0 basis-[calc(100%-2rem)] sm:basis-[calc(50%-1rem)] lg:basis-[calc(28.57%-1.14rem)]">
+                <div className="aspect-[3/4] rounded-xl overflow-hidden bg-cover bg-center relative"
+                     style={{ backgroundImage: `url(${project.image})` }}>
+                  <div className="absolute top-6 left-6">
+                    <span className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
+                      {project.badge}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-black/50 backdrop-blur-sm border border-white/50 rounded-lg p-6">
+                      <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                      <p className="text-white/90 text-sm leading-relaxed mb-4">{project.description}</p>
+                      <button className="flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
+                        Read case study
+                        <ArrowUpRight className="w-5 h-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <div className="flex justify-center gap-8">
-          <button className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+        <div className="flex justify-center gap-8 mt-8">
+          <button
+            onClick={scrollPrev}
+            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
             </svg>
           </button>
-          <button className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors">
+          <button
+            onClick={scrollNext}
+            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
             </svg>
