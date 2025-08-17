@@ -531,9 +531,11 @@ const PackagesSection = () => {
                   ))}
                 </div>
 
-                <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
-                  Get My Website
-                </Button>
+                <ContactFormModal>
+                  <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
+                    Get My Website
+                  </Button>
+                </ContactFormModal>
               </div>
             </div>
             <div className="lg:w-80 xl:w-96 bg-gray-200 bg-cover bg-center relative"
