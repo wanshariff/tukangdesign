@@ -337,8 +337,9 @@ const PackagesSection = () => {
                 </Button>
               </div>
             </div>
-            <div className="lg:w-80 xl:w-96 bg-gray-200 bg-cover bg-center" 
-                 style={{ backgroundImage: 'url(https://api.builder.io/api/v1/image/assets/TEMP/brand-foundation-image)' }}>
+            <div className="lg:w-80 xl:w-96 bg-gray-200 bg-cover bg-center relative"
+                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1634942537034-2531766767d1?w=500&h=720&fit=crop&crop=center)' }}>
+              <div className="absolute inset-0 bg-brand-800/20"></div>
             </div>
           </div>
 
