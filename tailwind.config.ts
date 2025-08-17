@@ -47,6 +47,29 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Tukang Design Brand Colors
+        brand: {
+          25: "#F0F7F2",
+          50: "#F1F5F2",
+          200: "#BBCFC1",
+          300: "#8FAF9A",
+          700: "#263D30",
+          800: "#22342B",
+          900: "#1D2C24",
+          950: "#121A15",
+        },
+        "accent-orange": "#CD9325",
+        gray: {
+          50: "#F6F6F6",
+          200: "#D1D1D1",
+          300: "#B0B0B0",
+          400: "#888888",
+          600: "#5D5D5D",
+          700: "#4F4F4F",
+          800: "#454545",
+          900: "#333333",
+          950: "#262626",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -88,4 +111,7 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  fontFamily: {
+    sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+  },
 } satisfies Config;
