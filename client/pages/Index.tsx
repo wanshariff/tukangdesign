@@ -330,9 +330,13 @@ const PainPointsSection = () => {
 // Portfolio Section
 const PortfolioSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    dragFree: true,
-    containScroll: 'trimSnaps'
+    loop: true,
+    dragFree: false,
+    containScroll: 'trimSnaps',
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 1024px)': { slidesToScroll: 1 }
+    }
   });
 
   const scrollPrev = useCallback(() => {
@@ -343,6 +347,18 @@ const PortfolioSection = () => {
     if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
 
+  // Auto-scroll functionality
+  useState(() => {
+    if (!emblaApi) return;
+
+    const autoScroll = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 4000); // Auto-scroll every 4 seconds
+
+    return () => clearInterval(autoScroll);
+  }, [emblaApi]);
+
+  // Only 4 projects as requested
   const projects = [
     {
       title: "Kapitani",
@@ -367,18 +383,6 @@ const PortfolioSection = () => {
       description: "We delivered a powerful brand revamp and a custom jersey design to give the academy a professional look to wear with pride.",
       badge: "Brand Revamp & Jersey Design",
       image: "https://api.builder.io/api/v1/image/assets/TEMP/87308c8ffa5d94713e04c98da188f9afaccaad4f?width=768"
-    },
-    {
-      title: "Tech Startup Logo",
-      description: "A modern tech startup needed a clean, minimalist logo that would scale across all platforms and convey innovation.",
-      badge: "Logo Design",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/b15ece4ef90fbca82aaaa3a2d48db69a75c7a653?width=768"
-    },
-    {
-      title: "Restaurant Brand Identity",
-      description: "Complete brand identity for a premium restaurant including logo, menu design, and signage.",
-      badge: "Full Brand Identity",
-      image: "https://api.builder.io/api/v1/image/assets/TEMP/464654eb4a00e7a16d472a5396f6855665baf904?width=768"
     }
   ];
 
@@ -396,11 +400,11 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* Carousel Container - Shows max 3 cards at a time */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-8">
+          <div className="flex">
             {projects.map((project, index) => (
-              <div key={index} className="relative group min-w-0 basis-[calc(100%-2rem)] sm:basis-[calc(50%-1rem)] lg:basis-[calc(28.57%-1.14rem)]">
+              <div key={index} className="relative group flex-none w-full sm:w-1/2 lg:w-1/3 px-4">
                 <div className="aspect-[3/4] rounded-xl overflow-hidden bg-cover bg-center relative"
                      style={{ backgroundImage: `url(${project.image})` }}>
                   <div className="absolute top-6 left-6">
@@ -427,7 +431,7 @@ const PortfolioSection = () => {
         <div className="flex justify-center gap-8 mt-8">
           <button
             onClick={scrollPrev}
-            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors"
+            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
@@ -435,7 +439,7 @@ const PortfolioSection = () => {
           </button>
           <button
             onClick={scrollNext}
-            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors"
+            className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center hover:border-gray-400 hover:bg-gray-50 transition-all"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
