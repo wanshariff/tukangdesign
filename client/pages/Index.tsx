@@ -633,24 +633,27 @@ const PortfolioSection = () => {
           <div className="flex">
             {projects.map((project, index) => (
               <div key={index} className="relative group flex-none w-full sm:w-1/2 lg:w-1/3 px-4">
-                <div className="aspect-[3/4] rounded-xl overflow-hidden bg-cover bg-center relative"
-                     style={{ backgroundImage: `url(${project.image})` }}>
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
-                      {project.badge}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-black/50 backdrop-blur-sm border border-white/50 rounded-lg p-6">
-                      <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
-                      <p className="text-white/90 text-sm leading-relaxed mb-4">{project.description}</p>
-                      <button className="flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
-                        Read case study
-                        <ArrowUpRight className="w-5 h-5" />
-                      </button>
+                <PortfolioOverlay project={project}>
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden bg-cover bg-center relative cursor-pointer transform hover:scale-105 transition-transform duration-300"
+                       style={{ backgroundImage: `url(${project.image})` }}>
+                    <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300"></div>
+                    <div className="absolute top-6 left-6">
+                      <span className="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
+                        {project.badge}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-black/50 backdrop-blur-sm border border-white/50 rounded-lg p-6">
+                        <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                        <p className="text-white/90 text-sm leading-relaxed mb-4">{project.description}</p>
+                        <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
+                          View case study
+                          <ArrowUpRight className="w-5 h-5" />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </PortfolioOverlay>
               </div>
             ))}
           </div>
