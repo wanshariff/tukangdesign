@@ -111,7 +111,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-  fontFamily: {
-    sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-  },
 } satisfies Config;
