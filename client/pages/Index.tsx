@@ -266,9 +266,11 @@ const HeroSection = () => (
           <Button variant="secondary" size="lg" className="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 border border-gray-300 shadow-lg">
             View Our Work
           </Button>
-          <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
-            Get Free Quote & Consultation
-          </Button>
+          <ContactFormModal>
+            <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
+              Get Free Quote & Consultation
+            </Button>
+          </ContactFormModal>
         </div>
       </div>
     </div>
