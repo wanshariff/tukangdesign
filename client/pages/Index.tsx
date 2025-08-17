@@ -481,70 +481,66 @@ const PackagesSection = () => {
           </p>
         </div>
 
-        <div className="space-y-0">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Brand Foundation Package */}
-          <div className="flex flex-col lg:flex-row bg-white rounded-t-xl lg:rounded-r-none lg:rounded-l-xl overflow-hidden min-h-[720px]">
-            <div className="flex-1 p-8 lg:p-16 lg:pr-8 flex items-center">
-              <div className="max-w-lg">
-                <h3 className="text-3xl lg:text-5xl font-semibold text-gray-900 mb-6">
-                  Brand Foundation Package
-                </h3>
-                <p className="text-gray-600 mb-8">
-                  Perfect for new businesses or those needing a serious refresh. We build a brand that you can be proud of.
-                </p>
-                
-                <div className="space-y-5 mb-12">
-                  {brandFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-7 h-7 text-brand-700 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      <span className="text-gray-600 leading-relaxed">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <ContactFormModal>
-                  <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
-                    Get My Brand
-                  </Button>
-                </ContactFormModal>
-              </div>
-            </div>
-            <div className="lg:w-80 xl:w-96 bg-gray-200 bg-cover bg-center relative"
-                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1634942537034-2531766767d1?w=500&h=720&fit=crop&crop=center)' }}>
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+            <div className="aspect-[4/3] bg-gray-200 bg-cover bg-center relative"
+                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop&crop=center)' }}>
               <div className="absolute inset-0 bg-brand-800/20"></div>
+            </div>
+            <div className="p-8">
+              <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
+                Brand Foundation Package
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Perfect for new businesses or those needing a serious refresh. We build a brand that you can be proud of.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                {brandFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-brand-700 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                    <span className="text-gray-600 text-sm leading-relaxed">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <ContactFormModal>
+                <Button size="lg" className="w-full bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold py-3 border-2 border-white/10 shadow-lg">
+                  Get My Brand
+                </Button>
+              </ContactFormModal>
             </div>
           </div>
 
           {/* Website Package */}
-          <div className="flex flex-col lg:flex-row-reverse bg-white rounded-b-xl lg:rounded-l-none lg:rounded-r-xl overflow-hidden min-h-[720px]">
-            <div className="flex-1 p-8 lg:p-16 lg:pl-8 flex items-center">
-              <div className="max-w-lg">
-                <h3 className="text-3xl lg:text-5xl font-semibold text-gray-900 mb-6">
-                  Go-Live Website Package
-                </h3>
-                <p className="text-gray-600 mb-8">
-                  Your 24/7 digital storefront. We create a professional, effective website designed to turn visitors into customers.
-                </p>
-                
-                <div className="space-y-5 mb-12">
-                  {websiteFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-7 h-7 text-brand-700 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                      <span className="text-gray-600 leading-relaxed">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <ContactFormModal>
-                  <Button size="lg" className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-6 py-3 border-2 border-white/10 shadow-lg">
-                    Get My Website
-                  </Button>
-                </ContactFormModal>
-              </div>
-            </div>
-            <div className="lg:w-80 xl:w-96 bg-gray-200 bg-cover bg-center relative"
-                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=720&fit=crop&crop=center)' }}>
+          <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+            <div className="aspect-[4/3] bg-gray-200 bg-cover bg-center relative"
+                 style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center)' }}>
               <div className="absolute inset-0 bg-brand-800/20"></div>
+            </div>
+            <div className="p-8">
+              <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
+                Go-Live Website Package
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Your 24/7 digital storefront. We create a professional, effective website designed to turn visitors into customers.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                {websiteFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-brand-700 mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                    <span className="text-gray-600 text-sm leading-relaxed">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <ContactFormModal>
+                <Button size="lg" className="w-full bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold py-3 border-2 border-white/10 shadow-lg">
+                  Get My Website
+                </Button>
+              </ContactFormModal>
             </div>
           </div>
         </div>
