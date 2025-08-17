@@ -43,18 +43,16 @@ const Navigation = () => (
 const HeroSection = () => (
   <section className="relative bg-brand-800 overflow-hidden">
     {/* Background Grid Pattern */}
-    <div className="absolute inset-0 opacity-20">
-      <div className="absolute inset-0 bg-gradient-radial from-black/50 via-transparent to-transparent" />
-      <div className="grid grid-cols-24 h-full">
-        {Array.from({ length: 24 }).map((_, i) => (
-          <div key={i} className="border-r border-white/20 h-full" />
-        ))}
-      </div>
-      <div className="absolute inset-0">
-        {Array.from({ length: 18 }).map((_, i) => (
-          <div key={i} className="border-b border-white/20 h-20" />
-        ))}
-      </div>
+    <div className="absolute inset-0 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-radial" />
+      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+      </svg>
     </div>
 
     <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -64,12 +62,12 @@ const HeroSection = () => (
             Brand Nampak Lesu? Website Tak Bawa Sales?
           </h1>
           <p className="text-lg sm:text-xl text-brand-200 max-w-3xl mx-auto leading-relaxed">
-            At Tukang Design, we don't just create pretty designs. We build powerful brand 
-            assets that work. With 13 years of big-league experience, we deliver high-quality 
+            At Tukang Design, we don't just create pretty designs. We build powerful brand
+            assets that work. With 13 years of big-league experience, we deliver high-quality
             design, cepat dan berbaloi.
           </p>
         </div>
-        
+
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
           <Button variant="secondary" size="lg" className="bg-white hover:bg-gray-50 text-gray-700 font-semibold px-6 py-3 border border-gray-300 shadow-lg">
             View Our Work
