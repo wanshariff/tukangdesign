@@ -197,9 +197,11 @@ const Navigation = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button className="hidden sm:flex bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
-              Get a Free Quote
-            </Button>
+            <ContactFormModal>
+              <Button className="hidden sm:flex bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
+                Get a Free Quote
+              </Button>
+            </ContactFormModal>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
