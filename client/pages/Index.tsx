@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, CheckCircle, MessageCircle, Zap, Rocket, Menu, X } from "lucide-react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
