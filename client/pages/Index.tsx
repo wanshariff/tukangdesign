@@ -19,26 +19,54 @@ const TukangLogo = ({ isDark = false }: { isDark?: boolean }) => (
 );
 
 // Navigation Component
-const Navigation = () => (
-  <header className="bg-brand-800 border-b border-brand-700">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between h-20">
-        <TukangLogo isDark />
-        
-        <nav className="hidden md:flex items-center space-x-1">
-          <a href="#" className="px-3 py-2 text-white font-semibold rounded-lg hover:bg-brand-700 transition-colors">Home</a>
-          <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Services</a>
-          <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Our Work</a>
-          <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">About</a>
-        </nav>
+const Navigation = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-        <Button className="bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
-          Get a Free Quote
-        </Button>
+  return (
+    <header className="bg-brand-800 border-b border-brand-700">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <TukangLogo isDark />
+
+          <nav className="hidden md:flex items-center space-x-1">
+            <a href="#" className="px-3 py-2 text-white font-semibold rounded-lg hover:bg-brand-700 transition-colors">Home</a>
+            <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Services</a>
+            <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Our Work</a>
+            <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">About</a>
+          </nav>
+
+          <div className="flex items-center space-x-4">
+            <Button className="hidden sm:flex bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
+              Get a Free Quote
+            </Button>
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-white hover:bg-brand-700 rounded-lg transition-colors"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-brand-700 py-4">
+            <nav className="flex flex-col space-y-2">
+              <a href="#" className="px-3 py-2 text-white font-semibold rounded-lg hover:bg-brand-700 transition-colors">Home</a>
+              <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Services</a>
+              <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Our Work</a>
+              <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">About</a>
+              <Button className="mt-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
+                Get a Free Quote
+              </Button>
+            </nav>
+          </div>
+        )}
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 // Hero Section
 const HeroSection = () => (
