@@ -36,7 +36,7 @@ const PortfolioOverlay = ({
         <Dialog.Content className="fixed inset-4 bg-white rounded-xl overflow-auto z-50 shadow-2xl max-w-6xl mx-auto">
           <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 p-6 flex justify-between items-center z-10">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900">{project.title}</h2>
+              <Dialog.Title className="text-2xl font-semibold text-gray-900">{project.title}</Dialog.Title>
               <span className="inline-block mt-2 bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
                 {project.badge}
               </span>
