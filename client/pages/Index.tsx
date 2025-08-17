@@ -4,6 +4,165 @@ import { useState, useCallback } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
+// Contact Form Modal Component
+const ContactFormModal = ({ children }: { children: React.ReactNode }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    // You can add form submission logic here
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        {children}
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl p-8 w-full max-w-md max-h-[90vh] overflow-auto z-50 shadow-2xl">
+          <div className="flex justify-between items-center mb-6">
+            <Dialog.Title className="text-2xl font-semibold text-gray-900">
+              Get Your Free Quote
+            </Dialog.Title>
+            <Dialog.Close asChild>
+              <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </Dialog.Close>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+                placeholder="Enter your phone number"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                Company Name
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+                placeholder="Enter your company name"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                Service Needed *
+              </label>
+              <select
+                id="service"
+                name="service"
+                required
+                value={formData.service}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+              >
+                <option value="">Select a service</option>
+                <option value="brand-foundation">Brand Foundation Package</option>
+                <option value="website">Go-Live Website Package</option>
+                <option value="both">Both Packages</option>
+                <option value="custom">Custom Project</option>
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                Project Details
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={3}
+                value={formData.message}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-orange focus:border-transparent"
+                placeholder="Tell us about your project..."
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold py-3 mt-6"
+            >
+              Send My Request
+            </Button>
+          </form>
+
+          <p className="text-xs text-gray-500 mt-4 text-center">
+            We'll get back to you within 24 hours with a detailed quote.
+          </p>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+};
+
 // Logo Component
 const TukangLogo = ({ isDark = false }: { isDark?: boolean }) => (
   <div className="flex items-center gap-2.5">
