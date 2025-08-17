@@ -348,7 +348,7 @@ const PortfolioSection = () => {
   }, [emblaApi])
 
   // Auto-scroll functionality
-  useState(() => {
+  useEffect(() => {
     if (!emblaApi) return;
 
     const autoScroll = setInterval(() => {
