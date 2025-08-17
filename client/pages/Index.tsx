@@ -949,7 +949,10 @@ const PackagesSection = () => {
                   "url(https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop&crop=center)",
               }}
             >
-              <div className="absolute inset-0 bg-brand-800/20"></div>
+              <div
+                className="absolute inset-0 bg-brand-800/20 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: 'url(https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg)' }}
+              ></div>
             </div>
             <div className="p-8">
               <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 mb-4">
