@@ -220,9 +220,11 @@ const Navigation = () => {
               <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Services</a>
               <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">Our Work</a>
               <a href="#" className="px-3 py-2 text-brand-300 font-semibold rounded-lg hover:bg-brand-700 hover:text-white transition-colors">About</a>
-              <Button className="mt-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
-                Get a Free Quote
-              </Button>
+              <ContactFormModal>
+                <Button className="mt-4 bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold px-4 py-2 rounded-lg border-2 border-white/10 shadow-lg">
+                  Get a Free Quote
+                </Button>
+              </ContactFormModal>
             </nav>
           </div>
         )}
