@@ -951,7 +951,10 @@ const PackagesSection = () => {
             >
               <div
                 className="absolute inset-0 bg-brand-800/20 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: 'url(https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg)' }}
+                style={{
+                  backgroundImage:
+                    "url(https://images.pexels.com/photos/6956225/pexels-photo-6956225.jpeg)",
+                }}
               ></div>
             </div>
             <div className="p-8">
