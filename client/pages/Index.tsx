@@ -4,6 +4,158 @@ import { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
+// Portfolio Overlay Modal Component
+const PortfolioOverlay = ({
+  children,
+  project
+}: {
+  children: React.ReactNode;
+  project: {
+    title: string;
+    description: string;
+    badge: string;
+    image: string;
+    details?: {
+      client: string;
+      duration: string;
+      services: string[];
+      challenge: string;
+      solution: string;
+      results: string[];
+      additionalImages: string[];
+    };
+  };
+}) => {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        {children}
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" />
+        <Dialog.Content className="fixed inset-4 bg-white rounded-xl overflow-auto z-50 shadow-2xl max-w-6xl mx-auto">
+          <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 p-6 flex justify-between items-center z-10">
+            <div>
+              <h2 className="text-2xl font-semibold text-gray-900">{project.title}</h2>
+              <span className="inline-block mt-2 bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-sm font-medium border border-brand-200">
+                {project.badge}
+              </span>
+            </div>
+            <Dialog.Close asChild>
+              <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <X className="w-6 h-6" />
+              </button>
+            </Dialog.Close>
+          </div>
+
+          <div className="p-6">
+            {/* Hero Image */}
+            <div className="aspect-video rounded-xl overflow-hidden mb-8 bg-cover bg-center"
+                 style={{ backgroundImage: `url(${project.image})` }}>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Project Details */}
+              <div className="lg:col-span-2 space-y-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Project Overview</h3>
+                  <p className="text-gray-600 text-lg leading-relaxed">{project.description}</p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">The Challenge</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {project.details?.challenge || "The client needed a complete rebrand to better represent their growing business and connect with their target audience in a competitive market."}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Our Solution</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {project.details?.solution || "We developed a comprehensive brand strategy that included logo design, color palette, typography, and brand guidelines to create a cohesive and memorable brand identity."}
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Results</h3>
+                  <ul className="space-y-2">
+                    {(project.details?.results || [
+                      "Increased brand recognition by 150%",
+                      "Improved customer engagement across all platforms",
+                      "25% increase in conversion rates",
+                      "Successfully launched across 5 markets"
+                    ]).map((result, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-brand-700 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-600">{result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Project Info Sidebar */}
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Info</h3>
+
+                <div className="space-y-4">
+                  <div>
+                    <dt className="text-sm font-medium text-gray-500 mb-1">Client</dt>
+                    <dd className="text-gray-900">{project.details?.client || project.title}</dd>
+                  </div>
+
+                  <div>
+                    <dt className="text-sm font-medium text-gray-500 mb-1">Duration</dt>
+                    <dd className="text-gray-900">{project.details?.duration || "8-12 weeks"}</dd>
+                  </div>
+
+                  <div>
+                    <dt className="text-sm font-medium text-gray-500 mb-1">Services</dt>
+                    <dd className="space-y-1">
+                      {(project.details?.services || ["Brand Strategy", "Logo Design", "Brand Guidelines"]).map((service, index) => (
+                        <span key={index} className="inline-block bg-white text-gray-700 px-2 py-1 rounded text-sm mr-2 mb-1">
+                          {service}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <ContactFormModal>
+                    <Button className="w-full bg-accent-orange hover:bg-accent-orange/90 text-white font-semibold">
+                      Start Similar Project
+                    </Button>
+                  </ContactFormModal>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Images */}
+            <div className="mt-12">
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">Additional Project Shots</h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {(project.details?.additionalImages || [
+                  "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+                  "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=400&h=300&fit=crop",
+                  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+                  "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
+                  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop",
+                  "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop"
+                ]).map((image, index) => (
+                  <div key={index} className="aspect-[4/3] rounded-lg overflow-hidden bg-cover bg-center shadow-md hover:shadow-lg transition-shadow"
+                       style={{ backgroundImage: `url(${image})` }}>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+};
+
 // Contact Form Modal Component
 const ContactFormModal = ({ children }: { children: React.ReactNode }) => {
   const [formData, setFormData] = useState({
