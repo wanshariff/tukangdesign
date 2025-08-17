@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CheckCircle, MessageCircle, Zap, Rocket } from "lucide-react";
+import { ArrowUpRight, CheckCircle, MessageCircle, Zap, Rocket, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 // Logo Component
 const TukangLogo = ({ isDark = false }: { isDark?: boolean }) => (
